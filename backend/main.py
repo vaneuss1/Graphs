@@ -37,33 +37,33 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/annotator/<id>/edit')
-def edit_annotator(id):
-    return render_template('edit_annotator.html', id=id)
-
-
-@app.route('/annotator/<id>/remove')
-def remove_annotator(id):
-    Annotator.query.filter_by(id=id).delete()
-    return redirect(url_for('annotators'))
-@app.route('/add_annotator', methods=['GET', 'POST'])
-def add_annotator():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        surname = request.form.get('surname')
-        tg_nick = request.form.get('tg_nick')
-        project = request.form.get('project')
-        status = request.form.get('status')
-        db.session.add(Annotator(name, surname, tg_nick, project, status, 'Семенов Иван'))
-        db.session.commit()
-        return redirect(url_for('annotators'))
-
-    return render_template('add_annotator.html')
-
-@app.route('/annotators')
-def annotators():
-    users = Annotator.query.all()
-    return render_template('annotators.html', annotators=users)
+# @app.route('/annotator/<id>/edit')
+# def edit_annotator(id):
+#     return render_template('edit_annotator.html', id=id)
+#
+#
+# @app.route('/annotator/<id>/remove')
+# def remove_annotator(id):
+#     Annotator.query.filter_by(id=id).delete()
+#     return redirect(url_for('annotators'))
+# @app.route('/add_annotator', methods=['GET', 'POST'])
+# def add_annotator():
+#     if request.method == 'POST':
+#         name = request.form.get('name')
+#         surname = request.form.get('surname')
+#         tg_nick = request.form.get('tg_nick')
+#         project = request.form.get('project')
+#         status = request.form.get('status')
+#         db.session.add(Annotator(name, surname, tg_nick, project, status, 'Семенов Иван'))
+#         db.session.commit()
+#         return redirect(url_for('annotators'))
+#
+#     return render_template('add_annotator.html')
+#
+# @app.route('/annotators')
+# def annotators():
+#     users = Annotator.query.all()
+#     return render_template('annotators.html', annotators=users)
 
 
 
