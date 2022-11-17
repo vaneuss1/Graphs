@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href={{url_for('static', filename="style/style.css")}} />
+    <title>Title</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header__content">
+                <div class="logo" >
+                    <a href={{url_for('index')}}><img src={{url_for('static', filename="logo.svg")}} class="logo_img"></a>
+                </div>
+                <div class="header_menu">
+                    <a class='menu__link' href={{url_for('annotators')}}>Список исполнителей</a>
+                    <a class='menu__link' href={{url_for('add_annotator')}}>Добавить исполнителя</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div>
+        <div class="container">
+            {% block table %}{% endblock %}
+            {% block form %}{% endblock %}
+            {% block edit %}{% endblock %}
+
+        </div>
+    </div>
+
+</body>
+</html>

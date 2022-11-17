@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+
+{% block edit %}
+<h1>Редактирование</h1>
+<form method="POST">
+  <p>Имя: <input type="text" required name="name"><br>
+  <p>Фамилия: <input type="text" required name="surname"><br>
+  <p>Telegram ник: <input type="text" required name="tg_nick"><br>
+  <p>Проект: <input type="text" name="project"><p></p>
+  <p>Статус:
+    <select name="status">
+      <option >Свободен</option>
+      <option >Не свободен</option>
+    </select>
+  </p>
+  <p><button type="submit">Сохранить</button></p>
+</form>
+
+{% endblock %}

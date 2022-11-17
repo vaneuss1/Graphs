@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block table%}
+<table border="1">
+    <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Ник в telegram</th>
+        <th>Проект</th>
+        <th>Статус</th>
+        <th>Менеджер</th>
+        <th>Редактировать</th>
+        <th>Удалить</th>
+    </tr>
+
+        {% for item in annotators %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.surname }}</td>
+                <td>{{ item.tg_nickname }}</td>
+                <td>{{ item.project }}</td>
+                {% if item.status == "Свободен" %}
+                <td style="background:green;">{{ item.status }}</td>
+                {% elif item.status == "Не свободен" %}
+                <td style="background:red;">{{ item.status }}</td>
+                {% endif %}
+                <td>{{ item.manager }}</td>
+                <td><a href={{url_for('edit_annotator', id=item.id)}}>Редактировать</a></td>
+                <td><a href={{url_for('remove_annotator', id=item.id)}}>Удалить</a></td>
+            </tr>
+        {% endfor %}
+
+</table>
+{% endblock%}
+
